@@ -1,11 +1,11 @@
 import mysql from 'mysql'
-import pool from './RutasDabase'
+import Pool from './RutasDabase';
 
-
-class agragarUser{
+export class App {
+   
     constructor(){
+        
+        
+    }
 
-    
 }
-
- }
