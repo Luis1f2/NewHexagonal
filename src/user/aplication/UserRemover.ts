@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 
-export function Welcome(req:Request,res:Response):Response {
-    return res.json('Vienbenido al Inicio')
+export class Vienbenida{
+    async run(id_Usuario: number){
+        console.log("Bien benido")
+    }
 }

@@ -7,35 +7,32 @@ const app = express()
 app.use(express.json())
 const PORT = 3000
 
-
-
-app.get('/data', (req, res) => {
-    pool.query('SELECT * FROM Usuario', (err, rows) => {
-        if (err) throw err;
-        res.json(rows);
-        
-      });
-});
-
-router.post('/post' ,(req, res)=>{
-   const newPost:Usercreated = req.body();
-    res.send('Guardando usuario')
+app.get('/data', (req, res) => {        
     
-    })
-app.get('/:id', (req, res)=>{
-const id = req.params.id;
-const connect = pool;
-connect.query('SELECT * FROM Usuario WHERE id_Usuario = ?' + id)
+async function guardarUsuario(usuario: Usercreated): Promise<void> {
+    try {
+      const query = 'INSERT INTO Usuarios (nombre, apallido, email, contraseña) VALUES (?, ?)';
+      const params = [usuario.nombre, usuario.apellido, usuario.email, usuario.contraseña];
+      const connection = await pool.getConnection();
+      await connection.execute(query, params);
+      connection.release();
+      console.log('Usuario guardado correctamente.');
+    } catch (error) {
+      console.error('Error al guardar el usuario:', error);
+    }
+  }
 
-})
+  const nuevoUsuario: Usercreated = {
+    id_usuario:3,
+    nombre: 'Juan Pérez',
+    apellido:'Rodulfo',
+    email: 'juan@example.com',
+    contraseña:'prueba'
+  };
 
-app.get('/',(req, res)=>{
-    res.json('vienbenido')
-    console.log('Alguien hizo ping aqui!! :,v '+ new Date().toLocaleDateString())
-    
-    
+  guardarUsuario(nuevoUsuario);
 
-});
+  });
 
 app.listen(PORT, ()=>{
     console.log('Servidor conectado a puerto: 3000' )
