@@ -1,4 +1,4 @@
-import pool from "../Infrestructure/RutasDabase";
+//import pool from "../Infrestructure/RutasDabase";
 
 /*export class IniciarUser{
     

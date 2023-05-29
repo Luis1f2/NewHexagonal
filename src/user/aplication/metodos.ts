@@ -1,8 +1,8 @@
 import mysql from 'mysql';
 
-import pool from  '../Infrestructure/RutasDabase';
 
-fetch('http://localhost:3000/data', {
+
+/*fetch('http://localhost:3000/data', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
@@ -17,4 +17,4 @@ fetch('http://localhost:3000/data', {
   .catch(error => {
     // Handle any errors
     console.error(error);
-  });
+  });*/

@@ -1,10 +1,13 @@
-import mysql from 'mysql2/promise';  
+import {createPool} from 'mysql2/promise';  
 
-const pool = mysql.createPool({
+export async function Connect(){
+  
+  await createPool({
   host: 'localhost',
   user: 'root',
   password: '',
   database: 'viodeolink',
+  connectionLimit:10,
 });
-
-export default pool;
+}
+//export default pool;
